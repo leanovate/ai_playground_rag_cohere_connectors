@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     confluence_api_token: str
     confluence_product_url: str
     confluence_connector_api_key: str
-    confluence_search_limit: int = 10
+    confluence_search_limit: int = 8
     items_per_user: int = 50
 
     class Config:

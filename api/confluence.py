@@ -8,6 +8,7 @@ import requests
 import sys
 
 from collections import OrderedDict
+from bs4 import BeautifulSoup
 
 logger = logging.getLogger(__name__)
 
@@ -119,7 +120,7 @@ class ConfluenceClient:
         formatted_query = re.sub("\W+", " ", query)
 
         params = {
-            "cql": f'text ~ "{formatted_query}"',
+            "cql": f'text ~ "{formatted_query}" order by lastModified desc',
             "limit": self.search_limit,
         }
 
@@ -133,8 +134,9 @@ class ConfluenceClient:
             raise UpstreamProviderError(
                 f"Error during Confluence search: {response.text}"
             )
-
-        return response.json().get("results", [])
+        
+        results = response.json().get("results", [])
+        return results
 
     def fetch_pages(self, pages):
         self._start_session()
@@ -146,7 +148,13 @@ class ConfluenceClient:
     def search(self, query):
         pages = self.search_pages(query)
 
-        return [page for page in self.fetch_pages(pages) if page is not None]
+        pages = [page for page in self.fetch_pages(pages) if page is not None]
+        for page in pages:
+            text = page['text']
+            soup = BeautifulSoup(text, "html.parser")
+            text_stripped = ' '.join(soup.stripped_strings)
+            page['text'] = text_stripped
+        return pages
 
 
 def get_client(settings):
