@@ -1,0 +1,11 @@
+{
+  "name": "aws deployment for rag_cohrer_connector",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "devDependencies": {
+    "serverless-offline": "^13.3.3",
+    "serverless-python-requirements": "^6.0.0",
+    "serverless-wsgi": "^3.0.1"
+  }
+}

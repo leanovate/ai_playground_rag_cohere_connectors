@@ -1,0 +1,17 @@
+service: leanovate-cohere-connectors
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  region: eu-central-1
+  runtime: python3.11
+
+functions:
+  api:
+    handler: api.main.handler
+    events:
+      - httpApi: '*'
+
+plugins:
+  - serverless-python-requirements

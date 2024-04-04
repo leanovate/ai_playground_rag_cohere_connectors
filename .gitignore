@@ -1,0 +1,20 @@
+# DEV TOOLS
+.venv/
+.vscode/
+*.pyc
+.DS_Store
+.serverless
+node_modules
+
+# ENV
+.env
+credentials.json
+token.json
+
+# Python Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Deployment artifacts
+fly.toml

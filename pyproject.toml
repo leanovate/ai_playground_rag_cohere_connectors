@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "confluence cohere connector"
+version = "0.1.0"
+description = ""
+authors = ["Joscha Krutzki <joka@jokasis.de>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+atlassian-python-api = "^3.39.0"
+python-dotenv = "^1.0.0"
+fastapi = "^0.110.1"
+mangum = "^0.17.0"
+aiohttp = "^3.9.3"
+pydantic-settings = "^2.2.1"
+
+
+[tool.poetry.group.dev.dependencies]
+uvicorn = "^0.29.0"
+ipython = "^8.23.0"
+cohere = "^5.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
