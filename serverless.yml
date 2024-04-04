@@ -6,6 +6,7 @@ provider:
   name: aws
   region: eu-central-1
   runtime: python3.11
+  deploymentMethod: direct
 
 functions:
   api:
